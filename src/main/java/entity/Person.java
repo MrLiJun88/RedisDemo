@@ -1,10 +1,29 @@
 package entity;
 
-public class Person {
+import java.io.Serializable;
+
+/**
+ * 使用spring-data-redis
+ * 实体类需要实例序列化接口
+ */
+public class Person implements Serializable {
 
     private String name;
     private int age;
     private String address;
+
+    public Person() {
+    }
+
+    public Person(String name, int age, String address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
+    public static String getKeyName() {
+        return "user:";
+    }
 
     @Override
     public String toString() {

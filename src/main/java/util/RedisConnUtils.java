@@ -17,14 +17,14 @@ public class RedisConnUtils {
         poolConfig.setMaxTotal(5);
         poolConfig.setMaxIdle(1);
 
-        String host = "192.168.194.114";
+        String host = "192.168.194.128";
         int port = 6379;
         pool = new JedisPool(poolConfig,host,port);
     }
 
     public static Jedis getConn() {
         Jedis jedis = pool.getResource();
-        jedis.auth("root");
+        jedis.auth("redis");
         return jedis;
     }
 
